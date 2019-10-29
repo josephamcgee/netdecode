@@ -64,15 +64,6 @@ switch ($smask)
 $bdec1,$bdec2,$bdec3,$bdec4 = $submask.split(".")
 $wdec1,$wdec2,$wdec3,$wdec4 = $wildcard.split(".")
 
-$wbit = $wdec1,$wdec2,$wdec3,$wdec4 | ForEach-Object {
-    [System.Convert]::ToString($_,2).PadLeft(8,'0')
-}
-$wbit = $wbit -join '.'
-$bitmask = $bdec1,$bdec2,$bdec3,$bdec4 | ForEach-Object {
-    [System.Convert]::ToString($_,2).PadLeft(8,'0')
-}
-$bitmask = $bitmask -join '.'
-
 # Find Network IP with submitted IP and subnet mask
 $n1 = $odec1 -band $bdec1
 $n2 = $odec2 -band $bdec2
